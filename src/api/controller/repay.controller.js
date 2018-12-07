@@ -66,6 +66,8 @@ export default {
         for (let counter = 0; counter <= total_repayments - 1; counter++) {
           // check the record now
 
+          console.log(data[counter], " line 69");
+
           const validatePayment = await Helpers.validatePaymentRecord(
             data[counter]
           );
@@ -153,9 +155,14 @@ export default {
               }); // -1 Credit history not found, false tech error else total repaid until now for the given season
             } else {
               // season not specified. Hence distribute the given amount
+              console.log("calling distribution");
               await Helpers.distributePayment(data[counter], counter)
-                .then(done => {})
-                .catch(err => {});
+                .then(done => {
+                  console.log(done);
+                })
+                .catch(err => {
+                  console.log(err);
+                });
             }
           }
         }

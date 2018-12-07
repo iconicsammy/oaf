@@ -174,6 +174,7 @@ export default {
     */
 
     // get list of farmers seasons with outstanding fees. If none exist, get the latest one and append it there
+    console.log(record, " record");
     const SQL =
       "SELECT TotalRepaid, Credit,SeasonId FROM CustomerSummaries WHERE CustomerID=:customer_id AND TotalRepaid<Credit ORDER BY SeasonId ASC";
 
@@ -497,33 +498,35 @@ export default {
         })
           .then(async data => {
             if (data != null) {
+              console.log(+record["SeasonID"], "season");
               if (+record["SeasonID"] > 0) {
                 await db.Season.findOne({
                   where: {
                     SeasonID: +record["SeasonID"]
                   }
                 })
-                  .then(async data => {
-                    if (data != null) {
+                  .then(async repo => {
+                    if (repo != null) {
                       response[0] = true;
-                    }
-                    else{
+                    } else {
                       response[1] = "Season ID not found";
                     }
                   })
                   .catch(err => {
-                    response[1] = "There was a technical error when validating the season";
+                    response[1] =
+                      "There was a technical error when validating the season";
                     return false;
                   });
               } else {
-                response[0] = false;
+                response[0] = true;
               }
             } else {
               response[1] = "Customer ID not found";
             }
           })
           .catch(err => {
-            response[1] = "There was a technical error when validating the customer";
+            response[1] =
+              "There was a technical error when validating the customer";
             return false;
           });
 
