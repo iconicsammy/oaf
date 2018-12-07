@@ -31,7 +31,7 @@ If you are running windows, you might have to specify the whole path to (E.g. d:
 
 ## Basic Tests
 
-Coming up
+run npm test at your command line
 
 ## Running the server
 
