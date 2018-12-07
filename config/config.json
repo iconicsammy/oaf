@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "acre2",
+    "password": "acre2",
+    "database": "acre2",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "test": {
+    "username": "acre2",
+    "password": "acre2",
+    "database": "acre2",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "username": "acre2",
+    "password": "acre2",
+    "database": "acre2",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
+  }
+}
